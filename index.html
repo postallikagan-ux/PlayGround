@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#071012" />
+  <link rel="icon" href="data:," />
+  <title>SEKTÖR 07 — Pixel FPS</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="game-shell" id="gameShell">
+    <canvas id="game" aria-label="Piksel tarzı 3D silah oyunu"></canvas>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="topbar">
+      <div class="brand"><span class="brand-mark">▰</span><span>VOID<span class="brand-dim">//</span>RUNNER</span></div>
+      <div class="mission"><span class="live-dot"></span><span>SEKTÖR 07</span><span class="mission-divider">/</span><span id="missionState">BEKLEMEDE</span></div>
+      <button class="sound-button" id="soundButton" aria-label="Sesi aç/kapat">♫ <span>SES AÇIK</span></button>
+    </div>
+
+    <section class="hud" id="hud" aria-live="polite">
+      <div class="hud-left">
+        <div class="stat-label">CAN DURUMU</div>
+        <div class="health-row"><span class="health-icon">✚</span><div class="health-track"><div class="health-fill" id="healthFill"></div></div><b id="healthText">100</b></div>
+        <div class="armor-row"><span>ZIRH</span><div class="armor-track"><div class="armor-fill" id="armorFill"></div></div><b id="armorText">50</b></div>
+      </div>
+      <div class="hud-center">
+        <div class="wave-label">DALGA <b id="waveText">01</b></div>
+        <div class="enemies-left"><span class="enemy-dot">◆</span><b id="enemyText">0</b><span>HEDEF</span></div>
+      </div>
+      <div class="hud-right">
+        <div class="weapon-name"><span class="weapon-icon">▰</span> PULSE RIFLE <span class="weapon-tag">MK-II</span></div>
+        <div class="ammo-row"><b id="ammoText">24</b><span class="ammo-divider">/</span><span id="reserveText">120</span><span class="ammo-caption">MÜHİMMAT</span></div>
+        <div class="reload-note" id="reloadNote">R — ŞARJÖR DEĞİŞTİR</div>
+      </div>
+    </section>
+
+    <div class="crosshair" id="crosshair" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b></div>
+    <div class="hit-marker" id="hitMarker">×</div>
+    <div class="damage-flash" id="damageFlash"></div>
+
+    <div class="bottom-left"><span class="keycap">WASD</span> HAREKET <span class="bottom-sep">·</span> <span class="keycap">MOUSE</span> NİŞAN</div>
+    <div class="bottom-right"><span class="keycap">LMB</span> ATEŞ <span class="bottom-sep">·</span> <span class="keycap">R</span> ŞARJÖR</div>
+
+    <section class="overlay" id="startOverlay">
+      <div class="overlay-grid"></div>
+      <div class="menu-card">
+        <div class="eyebrow"><span class="eyebrow-line"></span> SON GÜVENLİ BÖLGE <span class="eyebrow-line"></span></div>
+        <div class="title-wrap"><h1>VOID<span>RUNNER</span></h1><div class="title-stamp">07</div></div>
+        <p class="subtitle">YALNIZCA BİR ŞARJÖR DAHA.</p>
+        <div class="menu-divider"><span></span><i>◆</i><span></span></div>
+        <p class="briefing">Koloniyi ele geçiren makineleri temizle.<br />Her dalga bir öncekinden daha tehlikeli.</p>
+        <button class="start-button" id="startButton"><span>GÖREVE BAŞLA</span><b>→</b></button>
+        <div class="controls"><div><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>HAREKET</span></div><div><kbd>↖</kbd><span>NİŞAN / ATEŞ</span></div><div><kbd>R</kbd><span>YENİDEN DOLDUR</span></div></div>
+        <div class="menu-foot"><span>FPS // 60</span><span>PROTOKOL: HAYATTA KAL</span></div>
+      </div>
+      <div class="corner-note"><span>EST. 2089</span><br />ORBITAL DEFENSE<br />SYSTEMS</div>
+      <div class="version">BUILD 0.7.04 <span>●</span> OFFLINE SIMULATION</div>
+    </section>
+
+    <section class="end-overlay hidden" id="endOverlay">
+      <div class="end-card"><div class="eyebrow">SİNYAL KESİLDİ</div><h2 id="endTitle">GÖREV TAMAMLANDI</h2><p id="endCopy">Sektör temizlendi. Şimdilik.</p><div class="final-score"><span>TOPLAM SKOR</span><b id="finalScore">0000</b></div><button class="start-button" id="restartButton"><span>TEKRAR DENE</span><b>↻</b></button></div>
+    </section>
+
+    <div class="mobile-controls" id="mobileControls">
+      <div class="joystick" id="joystick"><div class="joy-knob" id="joyKnob"></div></div>
+      <button class="mobile-fire" id="mobileFire">ATEŞ</button>
+      <button class="mobile-reload" id="mobileReload">R</button>
+    </div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
