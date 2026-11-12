@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#101510" />
+  <title>Son Sığınak — Zombi Kıyameti</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="game-shell" id="gameShell">
+    <canvas id="gameCanvas" aria-label="Zombi kıyameti oyun alanı"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Son Sığınak ana sayfa"><span class="brand-mark">S<span>+</span></span><span class="brand-name">SON<br><b>SIĞINAK</b></span></a>
+      <div class="day-tag"><span class="live-dot"></span><span id="dayLabel">KIYAMET GÜNÜ 01</span></div>
+      <button class="icon-btn sound-btn muted" id="soundBtn" aria-label="Sesi aç veya kapat">♩</button>
+    </header>
+
+    <section class="hud" id="hud" aria-live="polite">
+      <div class="hud-card health-card"><div class="hud-label"><span>CAN</span><span id="healthText">100%</span></div><div class="meter"><i id="healthFill"></i></div></div>
+      <div class="hud-card wave-card"><span class="hud-label">DALGA</span><strong id="waveText">01</strong><small id="waveStatus">HAZIRLAN</small></div>
+      <div class="hud-card ammo-card"><span class="ammo-icon">▰</span><div><strong id="ammoText">12 <small>/ 48</small></strong><span class="hud-label">MÜHİMMAT</span></div></div>
+    </section>
+
+    <div class="mission-note" id="missionNote"><span class="note-icon">⌖</span><div><b>GÜVENLİ BÖLGE</b><span>Çevreyi temizle, hayatta kal.</span></div></div>
+    <div class="toast" id="toast" role="status"></div>
+
+    <section class="overlay intro-overlay" id="introOverlay">
+      <div class="intro-content">
+        <div class="eyebrow"><span></span> İSTANBUL · 07:42 · 3. GÜN</div>
+        <h1>SON<br><em>SIĞINAK</em></h1>
+        <p class="intro-copy">Şehir düştü. Sığınak bekliyor.<br><b>Bu geceyi atlatabilir misin?</b></p>
+        <div class="briefing"><span class="brief-icon">!</span><p><b>GÖREVİN</b><br>Gelen sürüleri durdur. Her dalga daha tehlikeli.</p></div>
+        <button class="primary-btn" id="startBtn"><span>HAYATTA KAL</span><b>→</b></button>
+        <div class="controls-hint"><span>◉</span> SOLDA HAREKET <i></i> SAĞDA ATEŞ</div>
+      </div>
+      <div class="intro-footer"><span>SON SİNYAL: 03:17 ÖÖ</span><span>NO. 04 — ÜSKÜDAR</span></div>
+    </section>
+
+    <section class="overlay pause-overlay hidden" id="pauseOverlay">
+      <div class="pause-panel"><span class="eyebrow">BİR NEFES AL</span><h2>OYUN<br><em>DURAKLATILDI</em></h2><p>Şimdilik güvendesin.</p><button class="primary-btn" id="resumeBtn"><span>DEVAM ET</span><b>→</b></button></div>
+    </section>
+
+    <section class="overlay result-overlay hidden" id="resultOverlay">
+      <div class="result-panel"><span class="eyebrow" id="resultEyebrow">SİNYAL KESİLDİ</span><h2 id="resultTitle">BU GECE<br><em>BİZİM DEĞİLDİ</em></h2><p id="resultCopy">Sığınak hâlâ orada. Bir kez daha dene.</p><div class="result-stats"><div><b id="finalWave">01</b><span>DALGA</span></div><div><b id="finalKills">0</b><span>ETKİSİZ</span></div><div><b id="finalTime">00:00</b><span>DAYANMA</span></div></div><button class="primary-btn" id="restartBtn"><span>YENİDEN DENE</span><b>↻</b></button></div>
+    </section>
+
+    <div class="game-controls" id="gameControls">
+      <div class="joystick" id="joystick"><div class="joy-ring"><div class="joy-knob" id="joyKnob"></div></div><span>HAREKET</span></div>
+      <div class="action-controls"><button class="utility-btn" id="reloadBtn" aria-label="Şarjör değiştir"><span>↻</span><small>ŞARJÖR</small></button><button class="fire-btn" id="fireBtn" aria-label="Ateş et"><span class="crosshair">✳</span><small>ATEŞ</small></button></div>
+    </div>
+    <button class="pause-btn" id="pauseBtn" aria-label="Oyunu duraklat">Ⅱ</button>
+    <div class="desktop-tip" id="desktopTip">HAREKET <b>W A S D</b><i>·</i> ATEŞ <b>BOŞLUK</b><i>·</i> ŞARJÖR <b>R</b></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
